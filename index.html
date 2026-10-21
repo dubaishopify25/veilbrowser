@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VeilBrowser — Free Antidetect Browser for Windows</title>
+<meta name="description" content="VeilBrowser is a free antidetect browser for Windows. Multiple profiles, a unique fingerprint and proxy for every profile — one account for the website and the app.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/auth.js"></script>
+</head>
+<body>
+<div class="fx-bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grid"></div></div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="assets/logo.png" alt="VeilBrowser logo"><span>Veil<em>Browser</em></span></a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#compare">Compare</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-right" id="nav-auth"></div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill">FREE &middot; Windows 10 / 11 &middot; v<span class="js-ver">0.1.4</span></span>
+    <h1>One browser.<br><span class="grad">Many identities.</span></h1>
+    <p>VeilBrowser is a free antidetect browser. Every profile gets its own fingerprint, cookies and proxy — and opens in its own Chrome-like window, just like the expensive tools. Without the expensive bill.</p>
+    <div class="hero-cta">
+      <a class="btn btn-green js-dl" href="auth.html#signup">&#11015; Download for Windows</a>
+      <a class="btn btn-ghost" href="#features">See features</a>
+    </div>
+    <div class="hero-meta">
+      <span>&#10003; Free to use</span>
+      <span>&#10003; One account — website + app</span>
+      <span>&#10003; No card required</span>
+    </div>
+  </div>
+
+    <div class="stage">
+      <div class="mock3d">
+        <div class="win">
+          <div class="win-bar">
+            <span class="dot" style="background:#f0524f"></span><span class="dot" style="background:#f0a832"></span><span class="dot" style="background:#3ddc84"></span>
+            <span class="win-tab">&#128737; Profile — US Store 01</span>
+          </div>
+          <div class="win-addr"><span style="color:#9aa1ad">&#8592; &#8594; &#8635;</span><span class="omni">&#128274; veilbrowser — profile running</span></div>
+          <div class="win-body">
+            <div class="prof"><b><span class="pdot"></span>US Store 01</b><div class="row"><span>Proxy</span><b>US &#183; SOCKS5</b></div><div class="row"><span>Fingerprint</span><b>Unique</b></div><button class="launch" type="button">Running</button></div>
+            <div class="prof"><b><span class="pdot"></span>UK Ads 02</b><div class="row"><span>Proxy</span><b>UK &#183; HTTP</b></div><div class="row"><span>Fingerprint</span><b>Unique</b></div><button class="launch" type="button">Running</button></div>
+            <div class="prof"><b><span class="pdot"></span>Social 03</b><div class="row"><span>Proxy</span><b>DE &#183; SOCKS5</b></div><div class="row"><span>Fingerprint</span><b>Unique</b></div><button class="launch" type="button">Launch</button></div>
+          </div>
+        </div>
+        <div class="float-card fc1">&#128737; Fingerprint protected<small>Canvas &#183; WebGL &#183; WebRTC</small></div>
+        <div class="float-card fc2">&#127760; Proxy per profile<small>HTTP / SOCKS5 + checker</small></div>
+        <div class="float-card fc3">&#128273; One account<small>Website + App</small></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section style="padding:44px 0 6px">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat rv"><b>$<span data-count="0">0</span></b><span>Price — free to use</span></div>
+      <div class="stat rv"><b><span data-count="1">0</span></b><span>Account for website + app</span></div>
+      <div class="stat rv"><b><span data-count="3">0</span></b><span>Steps to get started</span></div>
+      <div class="stat rv"><b><span data-count="2">0</span></b><span>Platforms — web &amp; Windows app</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Everything a profile needs</h2>
+      <p>Built for multi-account work — social media, e-commerce, ads and testing — on a free plan.</p>
+    </div>
+    <div class="grid">
+      <div class="card rv"><div class="ico">&#128100;</div><h3>Unlimited-style profiles</h3><p>Create separate browser profiles, each fully isolated — cookies, cache and sessions never mix.</p></div>
+      <div class="card rv"><div class="ico">&#128373;</div><h3>Unique fingerprint</h3><p>Every profile carries its own canvas, WebGL, fonts, timezone and user-agent, so profiles don't look like the same machine.</p></div>
+      <div class="card rv"><div class="ico">&#127760;</div><h3>Proxy per profile</h3><p>Attach an HTTP or SOCKS5 proxy to each profile, with a built-in proxy checker before you launch.</p></div>
+      <div class="card rv"><div class="ico">&#128187;</div><h3>Real Chrome feel</h3><p>Profiles open in their own window with Chrome-style tabs, address bar and new-tab page. Ctrl+T, Ctrl+L, Ctrl+W — all familiar.</p></div>
+      <div class="card rv"><div class="ico">&#128241;</div><h3>Virtual phone <span class="tag">COMING SOON</span></h3><p>A local virtual Android phone inside the app for mobile-only platforms and apps.</p></div>
+      <div class="card rv"><div class="ico">&#128273;</div><h3>One account everywhere</h3><p>Sign up once — on this website or inside the app — and the same login works in both places.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Start in 3 steps</h2>
+      <p>From signup to your first profile in a couple of minutes.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><b class="num">1</b><h3>Create your free account</h3><p>Sign up with your email. The same account signs you in to this website and the VeilBrowser app.</p></div>
+      <div class="step rv"><b class="num">2</b><h3>Download &amp; install</h3><p>Download the Windows installer from your dashboard and run it. Windows may show a SmartScreen notice — choose <i>More info &rarr; Run anyway</i>.</p></div>
+      <div class="step rv"><b class="num">3</b><h3>Launch profiles</h3><p>Log in to the app with the same account, create a profile, add a proxy if you need one, and launch.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="compare" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Why VeilBrowser?</h2>
+      <p>The antidetect features people pay monthly for — free.</p>
+    </div>
+    <table class="cmp rv">
+      <tr><th></th><th>VeilBrowser</th><th>Typical antidetect browsers</th></tr>
+      <tr><td>Price</td><td class="us">Free</td><td>Monthly subscription</td></tr>
+      <tr><td>Multiple isolated profiles</td><td class="us">&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Per-profile fingerprint &amp; proxy</td><td class="us">&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>One account — web + app</td><td class="us">&#10003;</td><td>&#8212;</td></tr>
+      <tr><td>Virtual phone</td><td class="us">Coming soon</td><td>Paid add-on</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="download" style="padding-top:0">
+  <div class="wrap">
+    <div class="dl-band rv">
+      <h2>Download VeilBrowser free</h2>
+      <p>Create your free account and download the Windows app from your dashboard. Your account works on the website and in the app — one login for both.</p>
+      <a class="btn btn-green js-dl" href="auth.html#signup" style="font-size:16.5px;padding:15px 34px">&#11015; Get VeilBrowser for Windows</a>
+      <div class="dl-info">
+        <span class="chip">Version <b class="js-ver">0.1.4</b></span>
+        <span class="chip">Size <b class="js-size">133 MB</b></span>
+        <span class="chip">Platform <b>Windows 10 / 11 (64-bit)</b></span>
+        <span class="chip">Released <b class="js-date">20 Oct 2026</b></span>
+      </div>
+      <p style="margin-top:20px;font-size:12.5px;color:var(--faint)">SHA-256: <span class="hash js-sha">e96025fb44d7573a92047dd1fcaacbedb50b061501117f6d799290a04a83201d</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Questions</h2></div>
+    <div class="faq">
+      <details><summary>Is VeilBrowser really free?</summary><p>Yes. The current version is free to download and use. Paid extras may come later, but profiles, fingerprints and proxies are free now.</p></details>
+      <details><summary>Do I need an account to use the app?</summary><p>Yes — one free account. Sign up on this website or inside the app; the same email and password then work in both places.</p></details>
+      <details><summary>Which Windows versions are supported?</summary><p>Windows 10 and Windows 11, 64-bit.</p></details>
+      <details><summary>Windows shows a SmartScreen warning. Is it safe?</summary><p>VeilBrowser is a new, independently built app, so Windows shows a caution message on first install. Choose <i>More info &rarr; Run anyway</i> to continue. You can verify your download with the SHA-256 hash shown above.</p></details>
+      <details><summary>Can I use my own proxies?</summary><p>Yes. Every profile can carry its own HTTP or SOCKS5 proxy, and the built-in checker tests it before launch.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>&copy; 2026 VeilBrowser &middot; by COS _ Chishti Office Samundri</span>
+    <span>Support: chishtioffice2@gmail.com</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var c = window.VB_CONFIG || {};
+  function set(cls, val) {
+    if (!val) return;
+    document.querySelectorAll("." + cls).forEach(function (el) { el.textContent = val; });
+  }
+  set("js-ver", c.APP_VERSION); set("js-size", c.APP_SIZE);
+  set("js-date", c.RELEASE_DATE); set("js-sha", c.APP_SHA256);
+
+  /* Download buttons: logged in -> dashboard, warna signup.
+     Signup ke baad dashboard se hi download hota hai. */
+  if (window.VB && window.VB.configured) {
+    window.VB.getSession().then(function (session) {
+      if (session) document.querySelectorAll(".js-dl").forEach(function (a) { a.href = "dashboard.html"; });
+    });
+  }
+})();
+</script>
+<script src="assets/fx.js"></script>
+</body>
+</html>

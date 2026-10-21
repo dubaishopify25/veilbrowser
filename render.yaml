@@ -1,0 +1,19 @@
+# VeilBrowser website — Render static site
+# Render dashboard me "New > Static Site" bana kar isi repo ko
+# connect karna hai. Publish directory = yehi folder (website/).
+services:
+  - type: web
+    name: veilbrowser
+    env: static
+    buildCommand: ""
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /login
+        destination: /auth.html
+      - type: rewrite
+        source: /signup
+        destination: /auth.html
+      - type: rewrite
+        source: /dashboard
+        destination: /dashboard.html

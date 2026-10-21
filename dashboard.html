@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — VeilBrowser</title>
+<link rel="icon" href="assets/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/auth.js"></script>
+</head>
+<body>
+<div class="fx-bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grid"></div></div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="assets/logo.png" alt="VeilBrowser logo"><span>Veil<em>Browser</em></span></a>
+    <div class="nav-links">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#faq">FAQ</a>
+    </div>
+    <div class="nav-right" id="nav-auth"></div>
+  </div>
+</nav>
+
+<div class="wrap dash">
+  <div id="loading" class="center-load">Loading your dashboard...</div>
+
+  <div id="content" style="display:none">
+    <div class="dash-head">
+      <div class="avatar" id="avatar">V</div>
+      <div>
+        <h2 style="font-size:24px">My Dashboard</h2>
+        <p style="color:var(--muted);font-size:14.5px" id="user-email">—</p>
+      </div>
+      <span class="chip" style="margin-left:auto">Plan <b style="color:var(--green)">FREE</b></span>
+    </div>
+
+    <div class="dash-grid">
+      <div class="card">
+        <h3 style="margin-bottom:12px">&#11015; Download VeilBrowser</h3>
+        <div class="kv"><span>Version</span><b id="d-ver">—</b></div>
+        <div class="kv"><span>Size</span><b id="d-size">—</b></div>
+        <div class="kv"><span>Platform</span><b>Windows 10 / 11 (64-bit)</b></div>
+        <div class="kv"><span>Released</span><b id="d-date">—</b></div>
+        <a class="btn btn-green" id="d-btn" href="#" style="width:100%;justify-content:center;margin-top:18px">Download for Windows</a>
+        <p class="small" style="text-align:left">Install ke waqt Windows SmartScreen aaye to <b>More info &rarr; Run anyway</b> dabayein.</p>
+        <p class="small" style="text-align:left">SHA-256: <span class="hash" id="d-sha">—</span></p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:12px">&#128273; Your account</h3>
+        <div class="kv"><span>Email</span><b id="a-email">—</b></div>
+        <div class="kv"><span>Plan</span><b style="color:var(--green)">Free</b></div>
+        <div class="kv"><span>App login</span><b>Same account</b></div>
+        <p style="color:var(--muted);font-size:14.5px;margin-top:14px">App install karke isi email aur password se login karein — website aur software, dono ka account ek hi hai.</p>
+        <button class="btn btn-ghost btn-sm" id="logout-btn" type="button" style="margin-top:16px">Log out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>&copy; 2026 VeilBrowser &middot; by COS _ Chishti Office Samundri</span>
+    <span>Support: chishtioffice2@gmail.com</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var c = window.VB_CONFIG || {};
+  document.getElementById("d-ver").textContent = c.APP_VERSION || "—";
+  document.getElementById("d-size").textContent = c.APP_SIZE || "—";
+  document.getElementById("d-date").textContent = c.RELEASE_DATE || "—";
+  document.getElementById("d-sha").textContent = c.APP_SHA256 || "—";
+  var dlBtn = document.getElementById("d-btn");
+  if (c.DOWNLOAD_URL && c.DOWNLOAD_URL.indexOf("PASTE_") !== 0) dlBtn.href = c.DOWNLOAD_URL;
+  else dlBtn.addEventListener("click", function (e) { e.preventDefault(); alert("Download link abhi lagaya ja raha hai — thodi dair me try karein."); });
+
+  if (!window.VB || !window.VB.configured) {
+    document.getElementById("loading").textContent = "Login system abhi setup ho raha hai.";
+    return;
+  }
+  window.VB.requireAuth().then(function (session) {
+    if (!session) return;
+    var email = session.user.email || "";
+    document.getElementById("user-email").textContent = email;
+    document.getElementById("a-email").textContent = email;
+    document.getElementById("avatar").textContent = (email.charAt(0) || "V").toUpperCase();
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  });
+
+  document.getElementById("logout-btn").addEventListener("click", function () {
+    window.VB.signOut().then(function () { window.location.href = "index.html"; });
+  });
+})();
+</script>
+<script src="assets/fx.js"></script>
+</body>
+</html>

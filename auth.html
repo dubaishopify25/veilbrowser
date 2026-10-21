@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in — VeilBrowser</title>
+<link rel="icon" href="assets/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/auth.js"></script>
+</head>
+<body>
+<div class="fx-bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grid"></div></div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="assets/logo.png" alt="VeilBrowser logo"><span>Veil<em>Browser</em></span></a>
+    <div class="nav-right" id="nav-auth"></div>
+  </div>
+</nav>
+
+<div class="auth-wrap">
+  <div class="auth-card">
+    <a class="brand" href="index.html"><img src="assets/logo.png" alt="" style="width:40px;height:40px"><span>Veil<em>Browser</em></span></a>
+    <h2 id="auth-title">Welcome back</h2>
+    <p class="sub" id="auth-sub">One account for the website and the app.</p>
+
+    <div class="tabs">
+      <button type="button" id="tab-login" class="on">Log in</button>
+      <button type="button" id="tab-signup">Sign up</button>
+    </div>
+
+    <form id="auth-form">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Your password" required autocomplete="current-password">
+      <button class="btn btn-grad" type="submit" id="submit-btn">Log in</button>
+    </form>
+
+    <div class="msg" id="msg"></div>
+
+    <div class="link-row" id="forgot-row"><a id="forgot-link">Forgot your password?</a></div>
+    <p class="small">Yehi account VeilBrowser app me bhi chalega — signup kahin se bhi ho, login dono jagah hoga.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var mode = "login";
+  var form = document.getElementById("auth-form");
+  var msg = document.getElementById("msg");
+  var btn = document.getElementById("submit-btn");
+  var tabL = document.getElementById("tab-login");
+  var tabS = document.getElementById("tab-signup");
+
+  function show(text, ok) {
+    msg.textContent = text;
+    msg.className = "msg " + (ok ? "ok" : "err");
+  }
+  function setMode(m) {
+    mode = m;
+    tabL.classList.toggle("on", m === "login");
+    tabS.classList.toggle("on", m === "signup");
+    document.getElementById("auth-title").textContent = m === "login" ? "Welcome back" : "Create your account";
+    document.getElementById("auth-sub").textContent = m === "login"
+      ? "One account for the website and the app."
+      : "Free forever plan. One account — website + app.";
+    btn.textContent = m === "login" ? "Log in" : "Sign up free";
+    document.getElementById("forgot-row").style.display = m === "login" ? "block" : "none";
+    msg.className = "msg";
+  }
+  tabL.addEventListener("click", function () { setMode("login"); });
+  tabS.addEventListener("click", function () { setMode("signup"); });
+  if (window.location.hash === "#signup") setMode("signup");
+
+  /* Agar pehle se login hai to seedha dashboard */
+  if (window.VB && window.VB.configured) {
+    window.VB.getSession().then(function (s) { if (s) window.location.href = "dashboard.html"; });
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!window.VB || !window.VB.configured) {
+      show("Login system abhi setup ho raha hai — thodi dair me dobara try karein.", false);
+      return;
+    }
+    var email = document.getElementById("email").value.trim();
+    var password = document.getElementById("password").value;
+    btn.disabled = true;
+    btn.textContent = "Please wait...";
+    var done = function () { btn.disabled = false; setMode(mode); };
+
+    if (mode === "signup") {
+      window.VB.signUp(email, password).then(function (r) {
+        done();
+        if (r.error) { show(r.error.message, false); return; }
+        if (r.data && r.data.session) { window.location.href = "dashboard.html"; return; }
+        show("Account ban gaya! Apni email par confirmation link aya hoga — pehle wo confirm karein, phir login karein.", true);
+      });
+    } else {
+      window.VB.signIn(email, password).then(function (r) {
+        done();
+        if (r.error) { show(r.error.message, false); return; }
+        window.location.href = "dashboard.html";
+      });
+    }
+  });
+
+  document.getElementById("forgot-link").addEventListener("click", function () {
+    var email = document.getElementById("email").value.trim();
+    if (!email) { show("Pehle upar apni email likhein, phir Forgot password dabayein.", false); return; }
+    if (!window.VB || !window.VB.configured) { show("Login system abhi setup ho raha hai.", false); return; }
+    window.VB.resetPassword(email).then(function (r) {
+      if (r.error) show(r.error.message, false);
+      else show("Password reset link apki email par bhej diya gaya hai.", true);
+    });
+  });
+})();
+</script>
+<script src="assets/fx.js"></script>
+</body>
+</html>
